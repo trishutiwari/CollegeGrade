@@ -4,8 +4,8 @@ var main = function (user,cls) {
    graphGPAcum($(".graph").css("width"),
 	       $(".graph").css("padding"),
 	       $(".graph").css("height"));
-   $('svg').after('<button type="button" class="btn btn-secondary gpaSecond">GPA per semester</button>');
-   $('svg').after('<button type="button" class="btn btn-secondary gpaFirst">GPA current Semester </button>');
+   $('svg').after('<button type="button" class="btn btn-secondary gpaSecond">GPA current semester</button>');
+   $('svg').after('<button type="button" class="btn btn-secondary gpaFirst">GPA per Semester </button>');
    }
    else {
    graphGrade($(".graph").css("width"),
@@ -16,15 +16,15 @@ var main = function (user,cls) {
    gradeRows();
    $('.mask').hide();
    $(".sem").click(function () {
-    $(".slideInMenu").animate({"margin-left": "0px"},"slow");
+    $(".slideInMenu").animate({"margin-left": "0px"},500);
     $(this).hide();
     $(".mask").fadeIn(500);
     $(".mask").css("z-index","3");
     $(".slideInMenu").css("z-index","4");
    });
    $(".icon-close").click( function () {
-    $(".slideInMenu").animate({"margin-left": "-450px"});
-    $(".btn").show();
+    $(".slideInMenu").animate({"margin-left": "-450px"},500);
+    $(".sem").fadeIn(500);
     $(".mask").fadeOut(500);
     $(".mask").css("z-index","0");
    });
@@ -34,6 +34,16 @@ var main = function (user,cls) {
     $(".icon-close").click();
     $(".whichSem").text($(this).text());  
     $(".whichSem").width("200px");
+   });
+   $('.gpaSecond').click(function () {
+   graphGPA($(".graph").css("width"),
+	       $(".graph").css("padding"),
+	       $(".graph").css("height"));
+   });
+   $('.gpaFirst').click(function () {
+   graphGPA($(".graph").css("width"),
+	       $(".graph").css("padding"),
+	       $(".graph").css("height"));
    });
 }
 
@@ -134,9 +144,31 @@ var graphGrade = function (w,p,h) {
  svg.append('path').attr('d',avlin(avscores)).attr('stroke', 'grey').attr('stroke-width', 2).attr('fill', 'none');
  svg.append("g").attr("class","axis").attr("transform", "translate(0," + (h - 2*p) + ")").call(xaxis); 
  svg.append("g").attr("class","axis").attr("transform", "translate(" +p+ ",0)").call(yaxis);
- var rec = svg.append("rect").attr("x",p).attr("y",p).attr("height",h/10).attr("width",w/10);
- rec.append("circle").attr("fill","black").attr("cx",2*p).attr("cy",2*p).attr("r",0,5);
+ var rec = svg.append("svg").attr("x",0).attr("y",0).attr("height",h/5).attr("width",w/3);
+ rec.append("circle").attr("fill","black").attr("cx",2*p).attr("cy",2*p).attr("r",5);
  rec.append("text").text("Your score").attr('x', 2.5*p).attr('y', 2*p);
- rec.append("circle").attr("fill","grey").attr("cx",3*p).attr("cy",3*p).attr("r",0.5);
- rec.append("text").text("Average score").attr('x', 3.5*p).attr('y', 3*p);
+ rec.append("circle").attr("fill","grey").attr("cx",2*p).attr("cy",3*p).attr("r",5);
+ rec.append("text").text("Average score").attr('x', 2.5*p).attr('y', 3*p);
  }
+
+var graphGPA = function (w,p,h) {
+ h = parseInt(h);
+ w = parseInt(w);
+ p = parseInt(p);
+ var svg = d3.select('svg');
+ var myscores = [[0,50],[1,80],[2,78],[3,86],[4,89],[5,78],[6,78],[7,89],[8,79]];
+ var xmaxi = d3.max(myscores,function (subarr) {return subarr[0]});
+ var xavmaxi = d3.max(avscores,function (subarr) {return subarr[0]});
+ var yscale = d3.scale.linear().domain([0,100]).range([h-2*p,p]).clamp(true);
+ var xscale = d3.scale.linear().domain([0,xmaxi]).range([p,w-2*p]).clamp(true);
+ var xaxis = d3.svg.axis().scale(xscale).orient("bottom");
+ var yaxis = d3.svg.axis().scale(yscale).orient("left");
+ var mylin = d3.svg.line()
+  .x(function (d) {return xscale(d[0]);})
+  .y(function(d) {return yscale(d[1]);})
+  .interpolate("basis");
+ svg.append('path').attr('d',mylin(myscores)).attr('stroke', 'black').attr('stroke-width', 2).attr('fill', 'none');//passing the dataset into the mylin instance 
+ //will allow it to create the svg path attribute in the correct format
+ svg.append("g").attr("class","axis").attr("transform", "translate(0," + (h - 2*p) + ")").call(xaxis); 
+ svg.append("g").attr("class","axis").attr("transform", "translate(" +p+ ",0)").call(yaxis);
+}

@@ -50,7 +50,7 @@
       <a class="navbar-brand" href="homePage.html">CollegeGrade</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a onclick=function () {return "/CollegeGrade/homePage/homePage.php?user="+$('.user').text())+"&class=cumGrades";}>Home</a></li>
+      <li class="active"><a onclick='function () {return "/CollegeGrade/homePage/homePage.php?user="+$(".user").text())+"&class=cumGrades";}'>Home</a></li>
 <!--none of the url after ?user= is being put in--> 
     </ul>
    </div>
