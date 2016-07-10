@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang='en'>
+ <head>
+  <title>Home Page</title>
+  <!--loading jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+  <!--load d3-->
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+  <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!--making bootstrap mobile friendly-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--loading css-->
+  <link rel="stylesheet" type="text/css" href="homePageCSS.css"/>
+
+  <!--loading javascript files -->
+  <script src="jsFunctions.js"></script>
+
+  <?php
+  //here we're hardcoding the username. However, when the user logs in, the username should be passed in as a url param (get request)
+  include "numberClasses.php";
+  numClasses();
+  if ($_SERVER['REQUEST_METHOD'] === 'GET') { 
+  $user = $_GET['user'];
+  $class = $_GET['class'];}
+  echo "<div style='display:none'class='user'>".$user."</div>";
+  echo "<div style='display:none'class='class'>".$class."</div>";
+  //query based on user and class here
+  ?>
+  <!--calling required js functions-->
+  <script>$(document).ready(function () { 
+   main($('.user').text(),$('.class').text());
+  });
+  </script>
+ </head>
+ <body>
+  <nav class="navbar navbar-inverse">
+   <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="homePage.html">CollegeGrade</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a onclick='function () {return "/CollegeGrade/homePage/homePage.php?user="+$(".user").text())+"&class=cumGrades";}'>Home</a></li>
+<!--none of the url after ?user= is being put in--> 
+    </ul>
+   </div>
+  </nav>
+  <button type="button" class="btn btn-secondary sem">Select Semester</button>
+  <div class="slideInMenu">
+   <div class="icon-close">X</div>
+   <div class="semester freshmanFall">Freshman Fall</div>
+   <div class="semester freshmanSpring">Freshman Spring</div>
+   <div class="semester sophomoreFall">Sophomore Fall</div>
+   <div class="semester sophomoreSpring">Sophomore Spring</div>
+   <div class="semester juniorFall">Junior Fall</div>
+   <div class="semester juniorSpring">Junior Spring</div>
+   <div class="semester seniorFall">Senior Fall</div>
+   <div class="semester seniorSpring">Senior Spring</div>
+  </div>
+  <div class="mask"></div>
+  <div class="whichSem">Now</div>
+   <svg class="graph">
+   </svg>
+  <div class="tableContainer">
+  <table class="table table-striped"> <!--Also need to add which semester this represents-->
+    <thead>
+      <tr>
+        <th>Assignment</th>
+        <th>Score</th>
+        <th>Average</th>
+	<th>Grade</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+ </div>
+</body>
+</html>

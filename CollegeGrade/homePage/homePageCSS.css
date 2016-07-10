@@ -1,0 +1,150 @@
+.navbar {
+ margin:0px;
+}
+.table {
+ width:75%;
+ z-index:0;
+}
+html {
+ height:100%;
+ min-height:100%;
+}
+
+body {
+ height:100%;
+ position:relative;
+ overflow-x:hidden;
+ z-index:0;
+}
+.tableContainer {
+ position:absolute;
+ height:50%;
+ margin-left:10%;
+ top:20%;
+ display:inline-block;
+}
+.slideInMenu {
+ width:300px;
+ bottom:50px;
+ height:99.5%;
+ display:inline-block;
+ position:relative;
+ margin-left:-450px;
+ background-image: url("slideInBarIMG.jpg");
+ padding-bottom:10px;
+ z-index:10;
+}
+
+.icon-close {
+ font-size: 30px;
+ font-weight:bold;
+ text-align:left;
+ padding-left:30px;
+ padding-top: 10px;
+ cursor:pointer;
+}
+.semester {
+ padding:10px;
+ font-size:20px;
+ margin:10px 40px 10px 40px;
+ border-radius: 5px;
+ background-color: rgba(0,0,0,0.5);
+ text-align:center;
+ color:white;
+ cursor:pointer;
+}
+
+.whichSem {
+ position:absolute;
+ top: 8%;
+ left:45%;
+ margin:auto;
+ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+ color: grey;
+ border: 1px solid grey;
+ border-radius: 5px;
+ width:80px;
+ height:40px;
+ text-align:center;
+ font-size:20px;
+ padding:5px;
+ margin-top:2%;
+}
+
+.sem {
+ transform: rotate(90deg);
+ display:inline;
+ position:relative;
+ margin-top:-63%;
+ margin-left:-48px;
+ z-index:20;
+}
+
+.box {
+ width: 150px;
+ height: 50px;
+ border-radius:5px;
+ -webkit-box-sizing: inherit;
+ -moz-box-sizing: inherit;
+ box-sizing: inherit;
+ background:#222;
+ color: rgb(255, 255, 255);
+ font-size: 18px;
+ font-weight: inherit;
+ font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+ font-style: inherit;
+ text-decoration: inherit;
+ text-align: center;
+ line-height: 1.3em;
+ margin:auto;
+}
+
+.graph {
+ position:relative;
+ margin:3%;
+ margin-left:10%;
+ height:70%;
+ width: 50%;
+ padding:2%;
+ z-index:0;
+}
+
+circle {
+ fill:yellow;
+ stroke:orange;
+ stroke-width:2px;
+}
+
+.axis path,
+.axis line {
+ fill: none;
+ stroke: black;
+ shape-rendering: crispEdges;
+}
+
+.axis text {
+ font-family: sans-serif;
+ font-size: 11px;
+}
+
+.mask {
+ position:absolute;
+ top:50px;
+ z-index:0;
+ width:100%;
+ height:inherit;
+ background-color:rgba(0,0,0,0.7);
+}
+
+.gpaSecond {
+ position:absolute;
+ left:30%;
+ top:90%;
+}
+
+.gpaFirst {
+ position:absolute;
+ top:90%;
+ left:10%;
+}
+

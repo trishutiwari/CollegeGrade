@@ -1,0 +1,76 @@
+FRONT END:
+
+2 seperate versions--one for student; one for professor/teacher.
+
+Student version:
+
+a) Nav bar-- one item for each class, plus one showing a general GPA vs time graph.
+
+b) class page: 
+ 
+ Each class page should have a graph which should contain the following:
+
+ 1) student grade vs. time
+
+ 2) class average vs. time
+
+ 3) Functionality for student to set a goal grade (which should turn red or something if grade drops below that)
+
+ Each class page should also have a table of grades
+
+ Also have a predicted grade for the class based on class average and standard deviation.
+
+c) General page:
+
+ 1) cumulative GPA vs. time (so includes everything from freshman year)
+
+ 2) Predicted GPA for a particular semester based on predicted grades.
+
+ 3) Graph of estimated GPA vs. time
+
+d) Functionality to look at the final grades of each class from previous semesters: organized into tables for each semester.
+
+e) Give an e-mail notification when a new grade is posted (which can be turned off)
+
+BACK END:
+
+a) A Database! (Probably the free version of Microsoft SQL server for the prototype)
+
+b) Organization:
+  
+ 1) Table 1: User Stats
+  
+      Student Name, Username, hashed+salted password
+ (r1) Trishita Tiwari trti    739bd829he3298h9823
+
+ 2) Table 2: ENGEC327A1 (Name based on class code)
+ 
+      Username, Grade 1, Grade 2, Grade 3, Grade 4, Grade 5, Grade 6
+ (r1) metadata   hw       hw       hw       lab       exam     hw    ---> tags
+ (r2) trti       100      99       95        98       100      96
+
+ 3) Table 3: ENGEC327A1weights:
+      Type, weight
+ (r1)  hw     0.2
+ 
+ 4) Table 4: Registered Classes
+ 
+      Username, Class 1, Class 2, Class 3, Class 4 ---> (Include all classes (including sections) offered at that college--these names should be the names of the individual class tables)
+ (r1)   trti       0        1        1        0    ---> (1 if taking class, 0 otherwise)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
