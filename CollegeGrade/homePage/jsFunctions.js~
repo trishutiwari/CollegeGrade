@@ -36,11 +36,15 @@ var main = function (user,cls) {
     $(".whichSem").width("200px");
    });
    $('.gpaSecond').click(function () {
+   $(".graph").remove();
+   $(".whichSem").after("<svg class='graph'></svg>");
    graphGPA($(".graph").css("width"),
 	       $(".graph").css("padding"),
 	       $(".graph").css("height"));
    });
    $('.gpaFirst').click(function () {
+   $(".graph").remove();
+   $(".whichSem").after("<svg class='graph'></svg>");
    graphGPA($(".graph").css("width"),
 	       $(".graph").css("padding"),
 	       $(".graph").css("height"));
@@ -158,7 +162,6 @@ var graphGPA = function (w,p,h) {
  var svg = d3.select('svg');
  var myscores = [[0,50],[1,80],[2,78],[3,86],[4,89],[5,78],[6,78],[7,89],[8,79]];
  var xmaxi = d3.max(myscores,function (subarr) {return subarr[0]});
- var xavmaxi = d3.max(avscores,function (subarr) {return subarr[0]});
  var yscale = d3.scale.linear().domain([0,100]).range([h-2*p,p]).clamp(true);
  var xscale = d3.scale.linear().domain([0,xmaxi]).range([p,w-2*p]).clamp(true);
  var xaxis = d3.svg.axis().scale(xscale).orient("bottom");

@@ -36,12 +36,16 @@ var main = function (user,cls) {
     $(".whichSem").width("200px");
    });
    $('.gpaSecond').click(function () {
+   $(".graph").remove();
+   $(".whichSem").after("<svg class='graph'></svg>");
    graphGPA($(".graph").css("width"),
 	       $(".graph").css("padding"),
 	       $(".graph").css("height"));
    });
    $('.gpaFirst').click(function () {
-   graphGPA($(".graph").css("width"),
+   $(".graph").remove();
+   $(".whichSem").after("<svg class='graph'></svg>");
+   graphGPAcum($(".graph").css("width"),
 	       $(".graph").css("padding"),
 	       $(".graph").css("height"));
    });
