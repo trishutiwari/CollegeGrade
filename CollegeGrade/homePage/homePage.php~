@@ -2,6 +2,9 @@
 <html lang='en'>
  <head>
   <title>Home Page</title>
+  <!--IE compatibility-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+ 
   <!--loading jquery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 

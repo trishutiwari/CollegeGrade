@@ -31,7 +31,7 @@
 
   <?php
   //here we're hardcoding the username. However, when the user logs in, the username should be passed in as a url param (get request)
-  include "numberClasses.php";
+  include "queries.php";
   numClasses();
   if ($_SERVER['REQUEST_METHOD'] === 'GET') { 
   $user = $_GET['user'];

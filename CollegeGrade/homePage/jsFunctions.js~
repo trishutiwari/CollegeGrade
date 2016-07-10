@@ -30,6 +30,8 @@ var main = function (user,cls) {
    });
    $(".semester").click(function () {
     $("table").remove();
+    $(".gpaSecond").prop("disabled",true); //we will not store gpa vs time graphs for older semesters> We need to figure out how to enable when student comes back to
+    //current semester
     selectOldTable($(this));
     $(".icon-close").click();
     $(".whichSem").text($(this).text());  
@@ -45,7 +47,7 @@ var main = function (user,cls) {
    $('.gpaFirst').click(function () {
    $(".graph").remove();
    $(".whichSem").after("<svg class='graph'></svg>");
-   graphGPA($(".graph").css("width"),
+   graphGPAcum($(".graph").css("width"),
 	       $(".graph").css("padding"),
 	       $(".graph").css("height"));
    });

@@ -30,6 +30,8 @@ var main = function (user,cls) {
    });
    $(".semester").click(function () {
     $("table").remove();
+    $(".gpaSecond").prop("disabled",true); //we will not store gpa vs time graphs for older semesters> We need to figure out how to enable when student comes back to
+    //current semester
     selectOldTable($(this));
     $(".icon-close").click();
     $(".whichSem").text($(this).text());  
@@ -71,7 +73,7 @@ var gradeRows = function () {
   //we're going to use a random number for the grade and average as well
   var grade = Math.floor(Math.random()*100);
   var average = Math.floor(Math.random()*100);
-  $("tbody").append("<tr><td>SomeClass</td><td>"+grade+"</td><td>"+average+"</td><td>A</tf></tr>");
+  $("tbody").append("<tr><td>SomeClass</td><td>"+grade+"</td><td>"+average+"</td><td>A</td></tr>");
  }
  $("tbody").append('<tr><td colspan="4" style="background-color:white;"><div class="box predictedGPA">Predicted GPA: 3.76</div></td></tr>')
 }
