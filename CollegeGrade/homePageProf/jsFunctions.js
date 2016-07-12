@@ -53,7 +53,7 @@ var assignGrades = function () {
    break;
   default:
    return null;
- } 
+ }
  //looping over to create as many rows as there are students
  for (var i = 0; i < students; i++){
   var score = 'score' + i;

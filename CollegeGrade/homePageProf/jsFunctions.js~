@@ -55,7 +55,6 @@ var assignGrades = function () {
    return null;
  } 
  //looping over to create as many rows as there are students
- $('table').css("top","10em")
  for (var i = 0; i < students; i++){
   var score = 'score' + i;
   //we're going to use a random number for the grade and average as well
