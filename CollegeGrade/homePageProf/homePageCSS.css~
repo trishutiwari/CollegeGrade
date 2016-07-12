@@ -1,0 +1,87 @@
+.navbar {
+ margin:0px;
+}
+.table {
+ width:75%;
+ z-index:0;
+}
+html {
+ height:100%;
+ min-height:100%;
+}
+
+body {
+ height:100%;
+ position:relative;
+ overflow-x:hidden;
+ z-index:0;
+}
+.tableContainer {
+ position:absolute;
+ height:50%;
+ margin-left:65%;
+ top:30%;
+ width:35%;
+ display:inline-block;
+}
+
+.box {
+ width: 150px;
+ height: 50px;
+ border-radius:5px;
+ -webkit-box-sizing: inherit;
+ -moz-box-sizing: inherit;
+ box-sizing: inherit;
+ background:#222;
+ color: rgb(255, 255, 255);
+ font-size: 18px;
+ font-weight: inherit;
+ font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+ font-style: inherit;
+ text-decoration: inherit;
+ text-align: center;
+ line-height: 1.3em;
+ margin:auto;
+}
+.addGradesDiv {
+ display:block;
+ margin-left:75%;
+ margin-top:5%;
+}
+.graph {
+ position:absolute;
+ margin:3%;
+ height:70%;
+ width: 50%;
+ padding:2%;
+ top:6%;
+}
+
+.axis path,
+.axis line {
+ fill: none;
+ stroke: black;
+ shape-rendering: crispEdges;
+}
+
+.axis text {
+ font-family: sans-serif;
+ font-size: 11px;
+}
+
+.mask {
+ position:absolute;
+ display:none;
+ top:50px;
+ z-index:1;
+ width:100%;
+ height:inherit;
+ background-color:rgba(0,0,0,0.7);
+}
+
+.addAssignTble {
+ position:absolute;
+ top:40%;
+ right:35%;
+ width:30%;
+}

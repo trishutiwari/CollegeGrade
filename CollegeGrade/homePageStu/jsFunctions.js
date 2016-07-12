@@ -21,6 +21,7 @@ var main = function (user,cls) {
     $(".mask").fadeIn(500);
     $(".mask").css("z-index","3");
     $(".slideInMenu").css("z-index","4");
+    $(".sem").css("z-index","5")
    });
    $(".icon-close").click( function () {
     $(".slideInMenu").animate({"margin-left": "-450px"},500);

@@ -33,8 +33,12 @@
      main();
     });
   </script>
+  <?php
+   include "queries.php";
+  ?>
  </head>
  <body>
+  <div class='mask'></div>
   <nav class="navbar navbar-inverse">
    <div class="container-fluid">
     <div class="navbar-header">
@@ -46,20 +50,20 @@
    </div>
   </nav>
   <div class="tableContainer">
-  <table class="table table-striped"> 
+  <form name='assignmentGrades' method='post'>
+   <table class="table table-striped"> 
     <thead>
-      <tr>
-        <th>Student</th>
-        <th>Score</th>
-      </tr>
-      <tr>
-       <th colspan=2><button type="button" class="btn btn-secondary addGradesBtn">Add Grades</button></th>
-      </tr>
     </thead>
     <tbody>
     </tbody>
-  </table>
+   </table>
+  </form>
  </div>
+ <div class="addGradesDiv">
+  <button type="button" class="btn btn-secondary addGradesBtn">Add Grades</button></th>
+ </div>
+ <svg class="graph">
+ </svg>
  </body>
  
 </html>

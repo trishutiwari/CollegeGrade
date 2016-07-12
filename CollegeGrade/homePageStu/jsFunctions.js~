@@ -23,6 +23,7 @@ var main = function (user,cls) {
     $(".slideInMenu").css("z-index","4");
    });
    $(".icon-close").click( function () {
+    $(".sem").css("z-index","5")
     $(".slideInMenu").animate({"margin-left": "-450px"},500);
     $(".sem").fadeIn(500);
     $(".mask").fadeOut(500);
@@ -73,7 +74,7 @@ var gradeRows = function () {
   //we're going to use a random number for the grade and average as well
   var grade = Math.floor(Math.random()*100);
   var average = Math.floor(Math.random()*100);
-  $("tbody").append("<tr><td>SomeClass</td><td>"+grade+"</td><td>"+average+"</td><td>A</tf></tr>");
+  $("tbody").append("<tr><td>SomeClass</td><td>"+grade+"</td><td>"+average+"</td><td>A</td></tr>");
  }
  $("tbody").append('<tr><td colspan="4" style="background-color:white;"><div class="box predictedGPA">Predicted GPA: 3.76</div></td></tr>')
 }
