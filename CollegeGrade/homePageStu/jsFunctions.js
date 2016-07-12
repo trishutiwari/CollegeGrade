@@ -29,6 +29,9 @@ var main = function (user,cls) {
     $(".mask").fadeOut(500);
     $(".mask").css("z-index","0");
    });
+   $('.mask').click(function () {
+     $(".icon-close").click();
+   });
    $(".semester").click(function () {
     $("table").remove();
     $(".gpaSecond").prop("disabled",true); //we will not store gpa vs time graphs for older semesters> We need to figure out how to enable when student comes back to
@@ -115,14 +118,16 @@ var graphGPAcum = function (w,p,h) {
  .enter()
  .append("rect")
  .attr("x",function (d) { return xscale(d[0]) -(rw/2);})
- .attr("y", function (d) {return h -2*p - yscalecalc(d[1]);})
+ .attr("y", function (d) {return h -3.5*p - yscalecalc(d[1]);})
  .attr("height",function (d) { return yscalecalc(d[1]);})
  .attr("width",rw)
  .attr("fill", function(d,i) {return "rgba(0, 0, 0, " + ((i + 2) / 10) + " )";});
  //calling the axes functions to generate the axes
  //call has to have a selection of DOM elements to call the function in
- svg.append("g").attr("class","axis").attr("transform", "translate(0," + (h - 2*p) + ")").call(xaxis); 
- svg.append("g").attr("class","axis").attr("transform", "translate(" +p+ ",0)").call(yaxis); 
+ console.log(h);
+ console.log(p);
+ svg.append("g").attr("class","axis").attr("transform", "translate(0," + (h - (3.5*p)) + ")").call(xaxis); 
+ svg.append("g").attr("class","axis").attr("transform", "translate(" +p+ ",-"+1.5*p+")").call(yaxis); 
 }
 
 var graphGrade = function (w,p,h) {
@@ -134,8 +139,8 @@ var graphGrade = function (w,p,h) {
  var avscores = [[0,23],[1,43],[2,67],[3,36],[4,79],[5,76],[6,88],[7,98],[8,39]];
  var xmaxi = d3.max(myscores,function (subarr) {return subarr[0]});
  var xavmaxi = d3.max(avscores,function (subarr) {return subarr[0]});
- var yscale = d3.scale.linear().domain([0,100]).range([h-2*p,p]).clamp(true);
- var xscale = d3.scale.linear().domain([0,xmaxi]).range([p,w-2*p]).clamp(true);
+ var yscale = d3.scale.linear().domain([0,100]).range([h-(3.5*p),p]).clamp(true);
+ var xscale = d3.scale.linear().domain([0,xmaxi]).range([p,w-(3.5*p)]).clamp(true);
  var xaxis = d3.svg.axis().scale(xscale).orient("bottom");
  var yaxis = d3.svg.axis().scale(yscale).orient("left");
  var mylin = d3.svg.line()
@@ -149,7 +154,7 @@ var graphGrade = function (w,p,h) {
  svg.append('path').attr('d',mylin(myscores)).attr('stroke', 'black').attr('stroke-width', 2).attr('fill', 'none');//passing the dataset into the mylin instance 
  //will allow it to create the svg path attribute in the correct format
  svg.append('path').attr('d',avlin(avscores)).attr('stroke', 'grey').attr('stroke-width', 2).attr('fill', 'none');
- svg.append("g").attr("class","axis").attr("transform", "translate(0," + (h - 2*p) + ")").call(xaxis); 
+ svg.append("g").attr("class","axis").attr("transform", "translate(0," + (h - 3.5*p) + ")").call(xaxis); 
  svg.append("g").attr("class","axis").attr("transform", "translate(" +p+ ",0)").call(yaxis);
  var rec = svg.append("svg").attr("x",0).attr("y",0).attr("height",h/5).attr("width",w/3);
  rec.append("circle").attr("fill","black").attr("cx",2*p).attr("cy",2*p).attr("r",5);
@@ -158,6 +163,8 @@ var graphGrade = function (w,p,h) {
  rec.append("text").text("Average score").attr('x', 2.5*p).attr('y', 3*p);
  }
 
+//IMPORTANT: FOR SOME REASON, THE GRAPHS WILL ONLY SCALE IF THE X-AXIS IS h-3.5*p (SO YOU HAVE TO CHANGE THE Y-RANGE AS WELL) 
+
 var graphGPA = function (w,p,h) {
  h = parseInt(h);
  w = parseInt(w);
@@ -165,8 +172,8 @@ var graphGPA = function (w,p,h) {
  var svg = d3.select('svg');
  var myscores = [[0,50],[1,80],[2,78],[3,86],[4,89],[5,78],[6,78],[7,89],[8,79]];
  var xmaxi = d3.max(myscores,function (subarr) {return subarr[0]});
- var yscale = d3.scale.linear().domain([0,100]).range([h-2*p,p]).clamp(true);
- var xscale = d3.scale.linear().domain([0,xmaxi]).range([p,w-2*p]).clamp(true);
+ var yscale = d3.scale.linear().domain([0,100]).range([h-(3.5*p),p]).clamp(true);
+ var xscale = d3.scale.linear().domain([0,xmaxi]).range([p,w-(3.5*p)]).clamp(true);
  var xaxis = d3.svg.axis().scale(xscale).orient("bottom");
  var yaxis = d3.svg.axis().scale(yscale).orient("left");
  var mylin = d3.svg.line()
@@ -175,6 +182,6 @@ var graphGPA = function (w,p,h) {
   .interpolate("basis");
  svg.append('path').attr('d',mylin(myscores)).attr('stroke', 'black').attr('stroke-width', 2).attr('fill', 'none');//passing the dataset into the mylin instance 
  //will allow it to create the svg path attribute in the correct format
- svg.append("g").attr("class","axis").attr("transform", "translate(0," + (h - 2*p) + ")").call(xaxis); 
+ svg.append("g").attr("class","axis").attr("transform", "translate(0," + (h - 3.5*p) + ")").call(xaxis); 
  svg.append("g").attr("class","axis").attr("transform", "translate(" +p+ ",0)").call(yaxis);
 }

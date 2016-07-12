@@ -31,7 +31,7 @@
 
   <?php
   //here we're hardcoding the username. However, when the user logs in, the username should be passed in as a url param (get request)
-  include "numberClasses.php";
+  include "queries.php";
   numClasses();
   if ($_SERVER['REQUEST_METHOD'] === 'GET') { 
   $user = $_GET['user'];
@@ -50,7 +50,12 @@
   <nav class="navbar navbar-inverse">
    <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="homePage.html">CollegeGrade</a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="homePage.php">CollegeGrade</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a onclick='function () {return "/CollegeGrade/homePage/homePage.php?user="+$(".user").text())+"&class=cumGrades";}'>Home</a></li>

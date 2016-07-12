@@ -35,9 +35,11 @@
   </script>
   <?php
    include "queries.php";
+   $cls = $_GET['class'];
   ?>
  </head>
  <body>
+  <div class='mask'></div>
   <nav class="navbar navbar-inverse">
    <div class="container-fluid">
     <div class="navbar-header">

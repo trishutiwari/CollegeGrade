@@ -13,7 +13,6 @@ html {
 body {
  height:100%;
  position:relative;
- overflow-x:hidden;
  z-index:0;
 }
 .tableContainer {
@@ -54,6 +53,7 @@ body {
  height:70%;
  width: 50%;
  padding:2%;
+ padding-bottom:0%;
  top:7%;
 }
 
@@ -72,10 +72,9 @@ body {
 .mask {
  position:absolute;
  display:none;
- top:50px;
  z-index:1;
  width:100%;
- height:inherit;
+ height:100%;
  background-color:rgba(0,0,0,0.7);
 }
 

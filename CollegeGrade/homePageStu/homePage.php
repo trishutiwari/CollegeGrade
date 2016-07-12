@@ -50,12 +50,19 @@
   <nav class="navbar navbar-inverse">
    <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="homePage.html">CollegeGrade</a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="homePage.php">CollegeGrade</a>
     </div>
-    <ul class="nav navbar-nav">
+    <div class="collapse navbar-collapse" id="myNavbar">
+     <ul class="nav navbar-nav">
       <li class="active"><a onclick='function () {return "/CollegeGrade/homePage/homePage.php?user="+$(".user").text())+"&class=cumGrades";}'>Home</a></li>
 <!--none of the url after ?user= is being put in--> 
     </ul>
+   </div>
    </div>
   </nav>
   <button type="button" class="btn btn-secondary sem">Select Semester</button>

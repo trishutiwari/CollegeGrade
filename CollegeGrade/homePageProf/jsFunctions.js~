@@ -1,12 +1,11 @@
 var main = function () {
  assignGrades();
+ numClasses();
  graphAvg($(".graph").css("width"),
 	       $(".graph").css("padding"),
 	       $(".graph").css("height"));
  displayStats();
  $(".addGradesBtn").click(function () {
- $(this).hide();
- //$('table').remove();
  $('body').append(`<table class="addAssignTble table table-striped" style="display:none;"> 
                       <thead>
                       </thead>
@@ -31,7 +30,6 @@ var main = function () {
  $('body').append(`<div class="addingGrades" style="display:none;">addingGrades</div>`);
  });
  $('.mask').click(function () {
- $(".addGradesBtn").show();
  $('.addAssignTble').remove();
  $('.mask').fadeOut(500);
  $('.addingGrades').remove();
@@ -39,11 +37,20 @@ var main = function () {
  gradeAvg();
 }
 
+var numClasses = function () {
+ //for now we're assigning a random number of classes to the navigation bar, but later we must query
+  var numClass = Math.floor((Math.random() * 10) + 1);
+  for (var i =0; i <= numClass; i++) {
+  $('.nav').append('<li><a href=?class='+i+'>Class '+i+'</a></li>');
+  }
+
+}
 var assignGrades = function () {
  //query the database for the final grades for each class and add row for each
  //for now we're again using a random number generator for number of classes
  switch ($('.submittedAssign').text()) {
   case 'submittedAssign':
+   $('.addGradesBtn').hide();
    var students = $('.numStu').text();
    $('.addGradesDiv').hide();
    $('.addAssign').remove();
@@ -53,7 +60,7 @@ var assignGrades = function () {
    break;
   default:
    return null;
- } 
+ }
  //looping over to create as many rows as there are students
  for (var i = 0; i < students; i++){
   var score = 'score' + i;
